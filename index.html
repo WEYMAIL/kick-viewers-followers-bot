@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEYMAIL | Soluciones de Crecimiento Kick</title>
+    <style>
+        /* Variables y Reset Básico */
+        :root {
+            --color-cream: #F8F1E3;
+            --color-wine: #6B002B;
+            --color-wine-dark: #4A001E;
+            --color-neon-green: #39FF14;
+            --color-text-soft: #333333;
+            --color-text-light: #fdfdfd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* BODY y Fondo */
+        body {
+            background-color: var(--color-cream);
+            color: var(--color-text-soft);
+            min-height: 100vh;
+        }
+
+        /* ENCABEZADO SUPERIOR (Barra) */
+        .top-header {
+            background-color: var(--color-wine);
+            color: var(--color-text-light);
+            text-align: center;
+            padding: 6px 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* NAVEGACIÓN (Logo y Enlaces) - Simplificada */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-wine);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Georgia', serif;
+            margin-right: 20px;
+        }
+
+        /* CONTENEDOR PRINCIPAL Y DE PRODUCTOS */
+        .products-container {
+            max-width: 1200px;
+            margin: 20px auto 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 0 5%;
+        }
+
+        /* TARJETA DE PRODUCTO */
+        .product-card {
+            background: #fff;
+            border: 2px solid var(--color-wine);
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        /* LADO IZQUIERDO (Imagen) */
+        .product-image-box {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+            border: 5px solid var(--color-wine);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* IMAGEN 1: Viewers en Vivo (k2.jpg - PRIMERO) */
+        #img-viewers {
+            background-image: url('k2.jpg'); 
+        }
+
+        /* IMAGEN 2: Seguidores (k.jpg - SEGUNDO) */
+        #img-followers {
+            background-image: url('k.jpg'); 
+        }
+
+
+        /* LADO DERECHO (Detalles) */
+        .product-details {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-box {
+            margin-bottom: 25px;
+        }
+
+        .current-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-wine);
+        }
+
+        /* BOTONES DE PAQUETE */
+        .package-options {
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .package-options label {
+            cursor: pointer;
+            padding: 8px 14px;
+            margin: 5px;
+            border: 1px solid var(--color-wine);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-wine);
+            background-color: transparent;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .package-options input[type="radio"] {
+            display: none;
+        }
+
+        .package-options input[type="radio"]:checked + label {
+            background-color: var(--color-wine);
+            color: var(--color-text-light);
+            border-color: var(--color-wine-dark);
+        }
+        
+        /* BOTONES DE ACCIÓN */
+        .action-buttons button {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .buy-now {
+            background-color: var(--color-wine);
+            color: var(--color-text-light);
+        }
+
+        .buy-now:hover {
+            background-color: var(--color-wine-dark);
+        }
+
+        /* INFORMACIÓN DE PAGO (Nuevo Bloque) */
+        .payment-callout {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .mp-button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: var(--color-neon-green);
+            color: var(--color-wine-dark);
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(57, 255, 20, 0.3);
+            transition: opacity 0.2s;
+        }
+        
+        .mp-details {
+            border: 1px dashed var(--color-wine);
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #fff8f8;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .mp-images-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .mp-image-box {
+            width: 50%;
+            text-align: center;
+        }
+        
+        .mp-image-box img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Media Queries */
+        @media (max-width: 800px) {
+            .product-card {
+                flex-direction: column;
+            }
+            .product-image-box, .product-details {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-header">Welcome to Weymail :)</div>
+
+    <nav class="nav-bar">
+        <span class="logo">WEYMAIL</span>
+        <a href="#" class="nav-links">Inicio</a>
+    </nav>
+
+    <main class="products-container">
+        
+        <div class="product-card" id="viewers-product">
+            <div class="product-image-box">
+                <div class="product-image" id="img-viewers"></div>
+            </div>
+
+            <div class="product-details">
+                <h2>Kick Live Viewers (Espectadores en Vivo)</h2>
+                <p class="subtitle">Visibilidad instantánea para mejorar tu ranking en la categoría.</p>
+
+                <div class="price-box">
+                    <span class="price-label">Precio por 30 Días - Paquete Básico</span>
+                    <div class="current-price" id="price-viewers">$25.00 USD</div>
+                </div>
+
+                <div class="package-options" onchange="updatePrice('viewers')">
+                    <p style="margin-bottom: 10px; font-weight: 600; width: 100%;">Paquete de Visibilidad (30 Días)</p>
+                    
+                    <input type="radio" id="view100" name="package_viewers" value="100" data-price="25.00" checked>
+                    <label for="view100">Intro (100 Viewers Máx)</label>
+
+                    <input type="radio" id="view250" name="package_viewers" value="250" data-price="35.00">
+                    <label for="view250">Standard (250 Viewers Máx)</label>
+
+                    <input type="radio" id="view500" name="package_viewers" value="500" data-price="60.00">
+                    <label for="view500">Premium (500 Viewers Máx)</label>
+
+                    <input type="radio" id="view1000" name="package_viewers" value="1000" data-price="100.00">
+                    <label for="view1000">Beast (1000 Viewers Máx)</label>
+                </div>
+
+                <div class="quantity-selector">
+                    <p style="margin-right: 15px; font-weight: 600;">Cantidad</p>
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="add-to-cart">Agregar al carrito</button>
+                    <button class="buy-now" onclick="buyNow('Live Viewers (30 Días)')">Comprar ahora</button>
+                </div>
+                
+                <div class="payment-callout">
+                    <button class="mp-button" onclick="buyNow('Live Viewers (30 Días)')">
+                        INICIAR COMPRA
+                    </button>
+                    <div class="mp-details">
+                        <p style="font-weight: 600;">¿CÓMO PAGAR?</p>
+                        <p class="mp-instruction">✅ Abre el enlace y pon el precio en dolares. En tu moneda, convierte la moneda dólares (el precio en internet) y luego envia el comprobante en Discord. O pregunta antes de comprar.</p>
+                        <p style="margin-top: 10px; font-size: 0.85rem;">Link de Pago: <a href="https://link.mercadopago.com.pe/kickservice" target="_blank">link.mercadopago.com.pe/kickservice</a></p>
+                    </div>
+                    <div class="mp-images-container">
+                        <div class="mp-image-box">
+                            <a href="https://link.mercadopago.com.pe/kickservice" target="_blank">
+                                <img src="mercado.jpg" alt="Paga con Mercado Pago">
+                            </a>
+                        </div>
+                        <div class="mp-image-box">
+                            <a href="https://discord.gg/xKa7QCC2" target="_blank">
+                                <img src="discord.jpg" alt="Únete a nuestro Discord">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="description-box">
+                    <p class="description-highlight">🔥 WEYMAIL | SOLUCIÓN LIVE VIEWERS (30 DÍAS)</p>
+                    <p class="description-paragraph">
+                        Aumenta tu visibilidad y posicionamiento en Kick. Nuestro servicio proporciona espectadores en vivo de forma constante y segura durante 30 días, simulando crecimiento orgánico para subir en las categorías.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-card" id="followers-product">
+            <div class="product-image-box">
+                <div class="product-image" id="img-followers"></div>
+            </div>
+
+            <div class="product-details">
+                <h2>Kick Premium Followers Growth Solution</h2>
+                <p class="subtitle">Seguidores de alta retención para crecimiento a largo plazo.</p>
+
+                <div class="price-box">
+                    <span class="price-label">Precio habitual</span>
+                    <div class="current-price" id="price-followers">$18.00 USD</div>
+                </div>
+
+                <div class="package-options" onchange="updatePrice('followers')">
+                    <p style="margin-bottom: 10px; font-weight: 600; width: 100%;">Paquete de Seguidores</p>
+                    
+                    <input type="radio" id="foll50" name="package_followers" value="50" data-price="20.00" checked>
+                    <label for="foll50">50 Seguidores</label>
+
+                    <input type="radio" id="foll250" name="package_followers" value="250" data-price="50.00">
+                    <label for="foll250">250 Seguidores</label>
+
+                    <input type="radio" id="foll500" name="package_followers" value="500" data-price="85.00">
+                    <label for="foll500">500 Seguidores</label>
+
+                    <input type="radio" id="foll1000" name="package_followers" value="1000" data-price="130.00">
+                    <label for="foll1000">1000 Seguidores</label>
+                    
+                    <input type="radio" id="follxd" name="package_followers" value="xd" data-price="200.00">
+                    <label for="follxd">5000 Seguidores</label>
+                </div>
+
+                <div class="quantity-selector">
+                    <p style="margin-right: 15px; font-weight: 600;">Cantidad</p>
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="add-to-cart">Agregar al carrito</button>
+                    <button class="buy-now" onclick="buyNow('Seguidores Premium')">Comprar ahora</button>
+                </div>
+
+                <div class="payment-callout">
+                    <button class="mp-button" onclick="buyNow('Seguidores Premium')">
+                        INICIAR COMPRA
+                    </button>
+                    <div class="mp-details">
+                        <p style="font-weight: 600;">¿CÓMO PAGAR?</p>
+                        <p class="mp-instruction">✅ Abre el enlace y pon el precio en dolares. En tu moneda, convierte la moneda dólares (el precio en internet) y luego envia el comprobante en Discord. O pregunta antes de comprar.</p>
+                        <p style="margin-top: 10px; font-size: 0.85rem;">Link de Pago: <a href="https://link.mercadopago.com.pe/kickservice" target="_blank">link.mercadopago.com.pe/kickservice</a></p>
+                    </div>
+                    <div class="mp-images-container">
+                        <div class="mp-image-box">
+                            <a href="https://link.mercadopago.com.pe/kickservice" target="_blank">
+                                <img src="mercado.jpg" alt="Paga con Mercado Pago">
+                            </a>
+                        </div>
+                        <div class="mp-image-box">
+                            <a href="https://discord.gg/xKa7QCC2" target="_blank">
+                                <img src="discord.jpg" alt="Únete a nuestro Discord">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="description-box">
+                    <p class="description-highlight">🌟 WEYMAIL | PAQUETES DE CRECIMIENTO DE SEGUIDORES</p>
+                    <p class="description-paragraph">
+                        Asegura tu autoridad en Kick y Twitch con nuestra **Solución de Seguidores Premium**. Utilizamos perfiles de alta retención diseñados para elevar el estatus de tu canal de forma segura.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <script>
+        const MERCADO_PAGO_LINK = "https://link.mercadopago.com.pe/kickservice";
+        const DISCORD_LINK = "https://discord.gg/xKa7QCC2";
+
+        // Función para actualizar el precio
+        function updatePrice(productType) {
+            const containerId = `${productType}-product`;
+            const priceElementId = `price-${productType}`;
+            const packageInputName = `package_${productType}`;
+            
+            const container = document.getElementById(containerId);
+            let selectedRadio = container.querySelector(`input[name="${packageInputName}"]:checked`);
+            
+            if (!selectedRadio) {
+                // Seleccionar el primer radio button por defecto si no hay ninguno marcado
+                selectedRadio = container.querySelector(`input[name="${packageInputName}"]`);
+                if (selectedRadio) selectedRadio.checked = true;
+            }
+            
+            if (selectedRadio) {
+                const newPrice = selectedRadio.getAttribute('data-price');
+                const priceElement = document.getElementById(priceElementId);
+                
+                // Formatear el precio a moneda USD
+                const formattedPrice = parseFloat(newPrice).toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                });
+                
+                priceElement.textContent = formattedPrice;
+            }
+        }
+
+        // Función de compra con instrucciones (sin pedir confirmación de monto)
+        function buyNow(productName) {
+            
+            // 1. Determinar el tipo de producto
+            let productType = productName.includes('Viewers') ? 'viewers' : 'followers';
+
+            // 2. Obtener el precio actual y el paquete seleccionado
+            let currentPrice = document.getElementById(`price-${productType}`).textContent;
+            let packageInputName = `package_${productType}`;
+            
+            const selectedRadio = document.querySelector(`input[name="${packageInputName}"]:checked`);
+            let selectedPackage = 'No Seleccionado';
+            if (selectedRadio) {
+                // Se busca la etiqueta (label) que está asociada al radio button seleccionado
+                selectedPackage = document.querySelector(`label[for="${selectedRadio.id}"]`).textContent;
+            }
+            
+            // 3. Mostrar las instrucciones finales (Nuevo mensaje solicitado por el usuario)
+            alert(
+                "🛒 INICIO DE COMPRA: "+productName+" - "+selectedPackage+"\n\n" +
+                `El precio en USD es ${currentPrice}.\n\n` +
+                "PASOS A SEGUIR:\n" +
+                "1. Abre el enlace de Mercado Pago (se abrirá en una nueva ventana) o haciendo clic en la imagen de Mercado Pago.\n" +
+                "2. Convierte el precio en dólares a tu moneda local (el precio en internet) y realiza el pago por ese monto.\n" +
+                "3. Envía el comprobante a nuestro Discord: "+DISCORD_LINK+"\n\n" +
+                "¡O pregunta antes de comprar si tienes dudas!"
+            );
+            
+            // 4. Abrir el link de Mercado Pago
+            window.open(MERCADO_PAGO_LINK, '_blank');
+        }
+
+        // Inicializar los precios al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            updatePrice('viewers'); // Primero Viewers
+            updatePrice('followers'); // Luego Followers
+        });
+        
+        // Simulación de botones de cantidad y carrito (para evitar errores)
+        document.querySelectorAll('.quantity-selector button').forEach(button => {
+            button.onclick = (e) => {
+                e.preventDefault();
+                alert("La cantidad se utiliza para el cálculo de totales. Por favor, selecciona el paquete deseado.");
+            };
+        });
+        
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.onclick = (e) => {
+                e.preventDefault();
+                alert("Funcionalidad de Carrito no implementada. Usa 'Comprar ahora' para proceder al pago directo.");
+            };
+        });
+    </script>
+</body>
+</html>
