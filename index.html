@@ -149,6 +149,14 @@
             text-decoration: none;
             font-weight: 700;
         }
+        /* Nuevo estilo para la imagen de Mercado Pago */
+        .payment-logo {
+            max-width: 150px; /* Ajusta el tamaño del logo */
+            height: auto;
+            margin: 10px auto;
+            display: block;
+            border-radius: 4px;
+        }
         
         /* Media Queries (Móviles) */
         @media (max-width: 600px) {
@@ -266,16 +274,22 @@
         </div>
 
         <div class="payment-info">
-            <p><span class="highlight">💵 PAGO INTERNACIONAL (Dólares):</span></p>
-            <p>Puedes pagar directamente con <a href="https://buymeacoffee.com/luisnuneze" target="_blank">Buy Me a Coffee (luisnuneze)</a> en dólares. ¡Es rápido y seguro!</p>
-            <hr style="border-top: 1px solid #3a3a3a; margin: 15px auto; width: 50%;">
-            <p><span class="highlight">🇵🇪 PAGO EN MONEDA LOCAL (Latinoamérica):</span></p>
-            <p>Si deseas pagar en **Soles (Perú)** u otra moneda local de Latinoamérica, por favor, <a href="https://wa.me/51946986960" target="_blank">contáctanos por WhatsApp al **+51 946986960**</a> antes de comprar.</p>
+            <p><span class="highlight">🌎 PAGO FÁCIL EN LATINOAMÉRICA:</span></p>
+            <img src="mercado.jpg" alt="Logo de Mercado Pago" class="payment-logo">
+            <p>Para pagos en moneda local (ej. **Soles en Perú**) o países de Latinoamérica, aceptamos **MERCADO PAGO**.</p>
+            <p>Por favor, contáctanos antes de comprar a nuestro WhatsApp:</p>
+            <p><a href="https://wa.me/51946986960" target="_blank" class="highlight">+51 946986960 (WhatsApp)</a></p>
+            
+            <hr style="border-top: 1px solid #3a3a3a; margin: 25px auto; width: 50%;">
+            
+            <p><span class="highlight">💵 PAGO INTERNACIONAL (Otros Países):</span></p>
+            <p>Para pagos en Dólares (USD) desde cualquier otro país, utiliza nuestra plataforma segura:</p>
+            <p><a href="https://buymeacoffee.com/luisnuneze" target="_blank">**Buy Me a Coffee (luisnuneze)**</a></p>
         </div>
         
     </main>
     <script>
-        // ENLACES ACTUALIZADOS Y ARMONIZADOS
+        // ENLACES UTILIZADOS
         const BUY_ME_A_COFFEE_LINK = "https://buymeacoffee.com/luisnuneze";
         const WHATSAPP_LINK = "https://wa.me/51946986960";
         
@@ -293,12 +307,12 @@
                 `🛒 INICIO DE COMPRA: ${productName}\n\n` +
                 `El **PRECIO FINAL** es ${formattedPrice}.\n\n` +
                 "⚠️ ¿CÓMO PROCEDER?\n" +
-                "1. Haz clic en 'OK' para ir a Buy Me a Coffee (pago en dólares).\n" +
-                "2. Si estás en Perú o LATAM y quieres pagar en moneda local, ¡CIERRA ESTE MENSAJE!\n" +
-                `3. Contáctanos por WhatsApp al **+51 946986960** para el pago en Soles/Moneda Local.\n`
+                "1. Haz clic en 'OK' para ir a Buy Me a Coffee (Pago en USD para la mayoría de países).\n" +
+                "2. Si quieres pagar con **Mercado Pago en Moneda Local (Latam)**, ¡CIERRA ESTE MENSAJE!\n" +
+                `3. Contáctanos por WhatsApp al **+51 946986960** para el link de Mercado Pago/Soles.\n`
             );
             
-            // Abrir el link de Buy Me a Coffee después del alert
+            // Abrir el link de Buy Me a Coffee después del alert (Para compras en USD)
             window.open(BUY_ME_A_COFFEE_LINK, '_blank');
         }
 
