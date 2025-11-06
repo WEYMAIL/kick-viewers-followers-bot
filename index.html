@@ -157,6 +157,35 @@
             display: block;
             border-radius: 4px;
         }
+
+        /* --- MENSAJE DE CONTACTO POST-COMPRA (NUEVO Y GRANDE) --- */
+        .post-purchase-contact {
+            background-color: #331A1A; /* Fondo rojizo/oscuro para alertar */
+            border: 3px solid #FF0040; /* Borde rojo fuerte */
+            padding: 30px 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .post-purchase-contact h2 {
+            color: var(--color-text-light);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        .post-purchase-contact .whatsapp-number {
+            display: block;
+            font-size: 2.5rem; /* El número GRANDE */
+            font-weight: 900;
+            color: var(--color-primary-accent); /* Verde neón Kick */
+            text-decoration: none;
+            margin: 10px 0;
+            text-shadow: 0 0 15px rgba(0, 255, 143, 0.6);
+        }
+        .post-purchase-contact p {
+            font-size: 1.1rem;
+            color: #FFC0CB; /* Texto que destaque */
+        }
         
         /* Media Queries (Móviles) */
         @media (max-width: 600px) {
@@ -178,6 +207,9 @@
             .service-row .action-button {
                 order: 4; /* Mover el botón al final */
                 width: 100%;
+            }
+            .post-purchase-contact .whatsapp-number {
+                font-size: 2rem; /* Ajustar el tamaño para móviles */
             }
         }
 
@@ -285,6 +317,13 @@
             <p><span class="highlight">💵 PAGO INTERNACIONAL (Otros Países):</span></p>
             <p>Para pagos en Dólares (USD) desde cualquier otro país, utiliza nuestra plataforma segura:</p>
             <p><a href="https://buymeacoffee.com/luisnunez" target="_blank">**Buy Me a Coffee (luisnuneze)**</a></p>
+        </div>
+
+        <div class="post-purchase-contact">
+            <h2>¡PASO FINAL IMPORTANTE!</h2>
+            <p>DESPUÉS DE REALIZAR TU COMPRA (Mercado Pago o Buy Me a Coffee), por favor, **contáctate inmediatamente al WhatsApp**.</p>
+            <a href="https://wa.me/51946986960" target="_blank" class="whatsapp-number">+51 946986960</a>
+            <p>¡No olvides mandar tu **COMPROBANTE DE PAGO** para iniciar tu servicio lo antes posible!</p>
         </div>
         
     </main>
