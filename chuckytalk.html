@@ -25,12 +25,14 @@
         .image-col { flex: 1; min-width: 300px; }
         .details-col { flex: 1; min-width: 400px; }
         .product-image { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); object-fit: cover; }
-        .price-box { margin: 25px 0; padding: 15px 20px; background-color: #E0E0E0; border-radius: 8px; text-align: center; }
+        /* El price-box se mueve a details-col, se quita el margin-top de 25px ya que estará arriba */
+        .price-box { margin: 0 0 25px 0; padding: 15px 20px; background-color: #E0E0E0; border-radius: 8px; text-align: center; }
         .price-box p { font-size: 1.2em; font-weight: bold; color: var(--dark-navy); margin-bottom: 5px; }
         .price-box .price { font-size: 3em; font-weight: 900; color: var(--primary-red); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); }
         .price-box .price span { font-size: 0.6em; color: var(--price-color); margin-left: 5px; }
+        /* Eliminamos el max-width, ya que en la columna de la derecha puede ocupar el ancho completo si se desea */
         .btn-buy {
-            display: block; width: 100%; max-width: 350px; margin: 20px auto 0; padding: 15px; background-color: var(--mp-blue); color: white; border: none; border-radius: 6px; font-size: 1.2em; font-weight: bold; text-decoration: none; text-align: center; transition: background-color 0.2s, transform 0.2s; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: block; width: 100%; margin: 20px auto 0; padding: 15px; background-color: var(--mp-blue); color: white; border: none; border-radius: 6px; font-size: 1.2em; font-weight: bold; text-decoration: none; text-align: center; transition: background-color 0.2s, transform 0.2s; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .btn-buy:hover { background-color: #008DBC; transform: translateY(-2px); }
         .product-details { margin-top: 20px; }
@@ -50,8 +52,10 @@
         }
         @media (max-width: 768px) {
             .product-content { flex-direction: column; }
+            /* Se mantiene el orden original para móviles: Imagen, Precio/Botón, Detalles, Info Tienda */
             .details-col { order: -1; }
             .image-col { min-width: 100%; }
+            .price-box { margin-top: 25px; }
         }
     </style>
 </head>
@@ -68,7 +72,10 @@
         
         <div class="image-col">
             <img src="https://scontent.ftcq1-1.fna.fbcdn.net/v/t39.30808-6/581795992_816460671014541_7608502972462487237_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=CIqAYLzLjboQ7kNvwHvSOEo&_nc_oc=AdmKaOzljYmopd3urDmtCJfXZKqiUHYA0rfyIIdbfo84KcGnnF7hLuTe1oUSSTApKnA&_nc_zt=23&_nc_ht=scontent.ftcq1-1.fna&_nc_gid=mRM27yHXBKf15sp8Qwo8Vg&oh=00_Afg6xBMhyO3TgEaYYy7_rtZY3qtIuiNKF_hDy9JLKJgKyg&oe=691EC679" alt="Muñeco Chucky I Can Talk" class="product-image">
+        </div>
 
+        <div class="details-col">
+            
             <div class="price-box">
                 <p>OFERTA EXCLUSIVA:</p>
                 <div class="price">S/450<span>Soles</span></div>
@@ -81,18 +88,15 @@
                     <i class="fa-solid fa-credit-card"></i> Pago Seguro / Pagos en cuotas disponibles.
                 </p>
             </div>
-        </div>
-
-        <div class="details-col">
             
             <div class="product-details">
                 <h2>CARACTERÍSTICAS DEL PRODUCTO</h2>
                 <ul>
-                    <li><i class="fa-solid fa-certificate"></i> **Figura 100% original**.</li>
-                    <li><i class="fa-solid fa-volume-high"></i> Incluye **función de voz "I Can Talk"** (reproduce frases clásicas).</li>
-                    <li><i class="fa-solid fa-user-gear"></i> **Totalmente articulado**.</li>
-                    <li><i class="fa-solid fa-star"></i> **Edición coleccionable**.</li>
-                    <li><i class="fa-solid fa-bolt"></i> **Entrega inmediata**.</li>
+                    <li><i class="fa-solid fa-certificate"></i> Figura 100% original.</li>
+                    <li><i class="fa-solid fa-volume-high"></i> Incluye función de voz "I Can Talk" (reproduce frases clásicas).</li>
+                    <li><i class="fa-solid fa-user-gear"></i> Totalmente articulado.</li>
+                    <li><i class="fa-solid fa-star"></i> Edición coleccionable.</li>
+                    <li><i class="fa-solid fa-bolt"></i> Entrega inmediata.</li>
                     <li><i class="fa-solid fa-hand-heart"></i> Ideal para coleccionistas y fanáticos del terror.</li>
                 </ul>
             </div>
@@ -101,14 +105,14 @@
                 <h3>Información de la Tienda y Envíos</h3>
                 
                 <div style="background-color: #FFF3E0; border: 1px solid #FFC107;">
-                    <p><i class="fa-solid fa-building"></i> **World Dolls E.I.R.L** – Tienda Virtual Oficial</p>
+                    <p><i class="fa-solid fa-building"></i> World Dolls E.I.R.L – Tienda Virtual Oficial</p>
                     <p><i class="fa-solid fa-key"></i> RUC: 20602972594</p>
-                    <p><i class="fa-solid fa-truck-fast"></i> **Envíos a todo el Perú** por Shalom, Olva Courier o Urbano.</p>
+                    <p><i class="fa-solid fa-truck-fast"></i> Envíos a todo el Perú por Shalom, Olva Courier o Urbano.</p>
                 </div>
                 
                 <div style="background-color: #E8F5E9; border: 1px solid #4CAF50;">
-                    <p><i class="fa-solid fa-money-check-dollar"></i> **Pagos Aceptados:** Tarjeta de crédito/débito, Yape, Plin y transferencia bancaria.</p>
-                    <p><i class="fa-solid fa-certificate"></i> **Garantía:** Producto nuevo y 100% original.</p>
+                    <p><i class="fa-solid fa-money-check-dollar"></i> Pagos Aceptados: Tarjeta de crédito/débito, Yape, Plin y transferencia bancaria.</p>
+                    <p><i class="fa-solid fa-certificate"></i> Garantía: Producto nuevo y 100% original.</p>
                 </div>
 
             </div>
