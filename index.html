@@ -3,368 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEYMAIL | SMM Panel Kick - Precios y Servicios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>World Dolls E.I.R.L - Muñecos Coleccionables Importados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* --- VARIABLES Y RESET (Tema Oscuro Kick) --- */
+        /* Variables de color */
         :root {
-            --color-dark-bg: #1A1A1A;
-            --color-card-bg: #282828;
-            --color-primary-accent: #00FF8F; /* VERDE NEÓN KICK */
-            --color-secondary-accent: #00C3FF; /* Azul para botones de acción */
-            --color-text-light: #F0F0F0;
-            --color-text-soft: #B0B0B0;
+            --primary-red: #D50000;
+            --dark-navy: #1A237E;
+            --background-light: #F5F5F5;
+            --card-white: #FFFFFF;
+            --text-dark: #333333;
+            --facebook-blue: #1877F2;
         }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
+
+        /* Estilos base */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--background-light); color: var(--text-dark); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* === 1. HEADER Y BANNER PRINCIPAL === */
+        .header { background-color: var(--dark-navy); color: var(--card-white); padding: 50px 0; text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 3em; margin-bottom: 10px; border-bottom: 3px solid var(--primary-red); display: inline-block; padding-bottom: 5px; }
+        .header p { font-size: 1.3em; font-weight: 300; }
+        
+        /* === 2. INFORMACIÓN DE LA EMPRESA Y VALORES === */
+        .company-info { text-align: center; margin-bottom: 40px; }
+        .company-info h2 { color: var(--primary-red); font-size: 2em; margin-bottom: 20px; }
+        .info-grid { display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap; }
+        .info-card { 
+            background: var(--card-white); 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            flex-basis: calc(33% - 20px);
+            min-width: 250px;
+            border-top: 5px solid var(--dark-navy);
+            transition: transform 0.3s;
         }
-        body {
-            background-color: var(--color-dark-bg);
-            color: var(--color-text-light);
-            min-height: 100vh;
-            padding-bottom: 50px;
+        .info-card:hover { transform: translateY(-5px); }
+        .info-card i { font-size: 2.5em; color: var(--primary-red); margin-bottom: 15px; }
+        .info-card h4 { color: var(--dark-navy); margin-bottom: 5px; }
+
+        /* === 3. SECCIÓN DE PRODUCTOS (CATÁLOGO) === */
+        .catalog h2 { text-align: center; color: var(--dark-navy); font-size: 2.5em; margin-bottom: 30px; padding-top: 20px; }
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
         }
-        /* --- ENCABEZADO Y NAVEGACIÓN --- */
-        .top-header {
-            background-color: var(--color-card-bg);
-            color: var(--color-primary-accent);
+        .product-card {
+            background: var(--card-white);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             text-align: center;
-            padding: 10px 0;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--color-primary-accent);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .nav-bar {
-            padding: 20px 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .product-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
-        .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--color-primary-accent);
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(0, 255, 143, 0.4);
+
+        .product-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-bottom: 1px solid #EEE;
         }
-        /* --- CONTENIDO PRINCIPAL (Panel de Precios) --- */
-        .price-panel-container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 5%;
-        }
-        .service-group {
-            background: var(--color-card-bg);
-            border-radius: 12px;
-            margin-bottom: 30px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-        .group-header {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-secondary-accent);
-            border-bottom: 2px solid var(--color-primary-accent);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        /* --- FILA DE SERVICIO (Diseño Horizontal) --- */
-        .service-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #3a3a3a;
+        .product-info { padding: 20px; }
+        .product-info h3 { color: var(--dark-navy); margin-bottom: 10px; font-size: 1.5em; }
+        .product-info .price { font-size: 1.8em; font-weight: bold; color: var(--primary-red); margin-bottom: 15px; }
+
+        .btn-view {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
             transition: background-color 0.2s;
         }
-        .service-row:last-child {
-            border-bottom: none;
-        }
-        .service-row:hover {
-            background-color: #2f2f2f;
-        }
-        
-        .service-row .details {
-            display: flex;
-            flex-direction: column;
-        }
-        .service-row .details .name {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--color-text-light);
-        }
-        .service-row .details .desc {
-            font-size: 0.85rem;
-            color: var(--color-text-soft);
-        }
-        .service-row .price {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--color-primary-accent);
-            text-shadow: 0 0 5px rgba(0, 255, 143, 0.4);
-            min-width: 80px;
-            text-align: right;
-        }
-        .service-row .action-button {
-            padding: 8px 15px;
-            background-color: var(--color-secondary-accent);
-            color: var(--color-dark-bg);
-            border: none;
-            border-radius: 4px;
-            font-weight: 700;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: background-color 0.3s;
-        }
-        .service-row .action-button:hover {
-            background-color: #0099cc;
-        }
+        .btn-view:hover { background-color: #A00000; }
 
-        /* --- INFO DE PAGO EXTRA --- */
-        .payment-info {
-            background-color: #12211C;
-            border: 1px dashed var(--color-primary-accent);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-            text-align: center;
+        /* === 4. FOOTER === */
+        .footer { 
+            background-color: var(--dark-navy); 
+            color: var(--card-white); 
+            text-align: center; 
+            padding: 20px 0; 
+            margin-top: 50px;
         }
-        .payment-info p {
-            margin: 8px 0;
-            font-size: 1rem;
-        }
-        .payment-info .highlight {
-            color: var(--color-primary-accent);
-            font-weight: 700;
-        }
-        .payment-info a {
-            color: var(--color-secondary-accent);
-            text-decoration: none;
-            font-weight: 700;
-        }
-        /* Nuevo estilo para la imagen de Mercado Pago */
-        .payment-logo {
-            max-width: 150px; /* Ajusta el tamaño del logo */
-            height: auto;
-            margin: 10px auto;
-            display: block;
-            border-radius: 4px;
-        }
+        .footer p { margin-bottom: 5px; font-size: 0.9em; }
+        .footer a { color: var(--facebook-blue); text-decoration: none; font-weight: bold; }
+        .footer a:hover { text-decoration: underline; }
 
-        /* --- MENSAJE DE CONTACTO POST-COMPRA (NUEVO Y GRANDE) --- */
-        .post-purchase-contact {
-            background-color: #331A1A; /* Fondo rojizo/oscuro para alertar */
-            border: 3px solid #FF0040; /* Borde rojo fuerte */
-            padding: 30px 20px;
-            border-radius: 10px;
-            margin-top: 40px;
-            text-align: center;
-        }
-        .post-purchase-contact h2 {
-            color: var(--color-text-light);
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-        .post-purchase-contact .whatsapp-number {
-            display: block;
-            font-size: 2.5rem; /* El número GRANDE */
-            font-weight: 900;
-            color: var(--color-primary-accent); /* Verde neón Kick */
-            text-decoration: none;
-            margin: 10px 0;
-            text-shadow: 0 0 15px rgba(0, 255, 143, 0.6);
-        }
-        .post-purchase-contact p {
-            font-size: 1.1rem;
-            color: #FFC0CB; /* Texto que destaque */
-        }
-        
-        /* Media Queries (Móviles) */
-        @media (max-width: 600px) {
-            .service-row {
-                flex-wrap: wrap;
-                justify-content: center;
-                text-align: center;
-                gap: 10px;
-            }
-            .service-row .details {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            .service-row .price {
-                order: 3; /* Mover el precio al final */
-                width: 50%;
-                text-align: center;
-            }
-            .service-row .action-button {
-                order: 4; /* Mover el botón al final */
-                width: 100%;
-            }
-            .post-purchase-contact .whatsapp-number {
-                font-size: 2rem; /* Ajustar el tamaño para móviles */
-            }
-        }
-
-        /* Google Translate Widget Styling */
-        .skiptranslate.goog-te-gadget {
-            font-size: 0 !important;
-            line-height: 0 !important;
-            padding: 0 !important;
-        }
-        .goog-te-gadget-simple {
-            border: none !important;
-            background-color: transparent !important;
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .info-card { flex-basis: 100%; }
         }
     </style>
 </head>
 <body>
-    <div class="top-header">WEYMAIL | SMM KICK - LOS PRECIOS MÁS ACCESIBLES</div>
-    <nav class="nav-bar">
-        <span class="logo">WEYMAIL</span>
-        <div id="google_translate_element"></div>
-    </nav>
-    <main class="price-panel-container">
 
-        <div class="service-group">
-            <div class="group-header">👥 KICK FOLLOWERS (Seguidores)</div>
+<div class="header">
+    <div class="container">
+        <h1>WORLD DOLLS E.I.R.L</h1>
+        <p>Muñecos Coleccionables Importados - La Calidad que Buscas, 100% Original.</p>
+    </div>
+</div>
+
+<div class="container">
+    
+    <section class="company-info">
+        <h2>Somos una Empresa Registrada en Perú (RUC: 20602972594)</h2>
+        <div class="info-grid">
             
-            <div class="service-row" data-name="50 Seguidores" data-price="5.00">
-                <div class="details">
-                    <span class="name">🚀 50 Seguidores **PERMANENTES**</span>
-                    <span class="desc">Baja caída o **NULA**. Ideal para completar afiliación rápido.</span>
-                </div>
-                <div class="price">$5.00 USD</div>
-                <button class="action-button" onclick="buyNow(this)">COMPRAR</button>
-            </div>
-            
-            <div class="service-row" data-name="200 Seguidores" data-price="10.00">
-                <div class="details">
-                    <span class="name">⭐ 200 Seguidores **PERMANENTES**</span>
-                    <span class="desc">El paquete más popular. Entrega garantizada y **sin caídas**.</span>
-                </div>
-                <div class="price">$10.00 USD</div>
-                <button class="action-button" onclick="buyNow(this)">COMPRAR</button>
+            <div class="info-card">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h4>Productos Importados</h4>
+                <p>Traemos los modelos más exclusivos directamente para ti.</p>
             </div>
 
-            <div class="service-row" data-name="500 Seguidores" data-price="30.00">
-                <div class="details">
-                    <span class="name">🔥 500 Seguidores (High Quality) **PERMANENTES**</span>
-                    <span class="desc">Aumenta tu autoridad y credibilidad en el canal.</span>
-                </div>
-                <div class="price">$30.00 USD</div>
-                <button class="action-button" onclick="buyNow(this)">COMPRAR</button>
+            <div class="info-card">
+                <i class="fa-solid fa-lock"></i>
+                <h4>Pago Seguro</h4>
+                <p>Aceptamos tarjetas, Yape, Plin y transferencias bancarias con total seguridad.</p>
             </div>
-            
-            <div class="service-row" data-name="1000 Seguidores" data-price="50.00">
-                <div class="details">
-                    <span class="name">👑 1000 Seguidores (Crecimiento Masivo) **PERMANENTES**</span>
-                    <span class="desc">Solución profesional para el Partner. Seguidores de calidad.</span>
-                </div>
-                <div class="price">$50.00 USD</div>
-                <button class="action-button" onclick="buyNow(this)">COMPRAR</button>
+
+            <div class="info-card">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h4>Envíos Globales</h4>
+                <p>Despachamos a **todo el Perú** y **México** de forma rápida y garantizada.</p>
             </div>
 
         </div>
+    </section>
 
-        <div class="service-group">
-            <div class="group-header">👁️ KICK VIEWERS / CHATTERS (30 DÍAS)</div>
-            
-            <div class="service-row" data-name="100 Viewers 30 Días" data-price="20.00">
-                <div class="details">
-                    <span class="name">🔴 100 Espectadores Máx. (30 Días)</span>
-                    <span class="desc">**NO SON BOTS.** Viewers reales de **IPs Residenciales**. Logra **Partner o Verificado** y **gana por hora**.</span>
-                </div>
-                <div class="price">$20.00 USD</div>
-                <button class="action-button" onclick="buyNow(this)">COMPRAR</button>
-            </div>
-            
-            <div class="service-row" data-name="250 Viewers 30 Días" data-price="35.00">
-                <div class="details">
-                    <span class="name">📈 250 Espectadores Máx. (30 Días)</span>
-                    <span class="desc">Tráfico real. **Nunca caen**. Indetectable, ideal para **logros** y crecimiento sostenido.</span>
-                </div>
-                <div class="price">$35.00 USD</div>
-                <button class="action-button" onclick="buyNow(this)">COMPRAR</button>
-            </div>
-            
-            <div class="service-row" data-name="500 Viewers 30 Días" data-price="60.00">
-                <div class="details">
-                    <span class="name">💎 500 Espectadores Máx. (30 Días)</span>
-                    <span class="desc">Máxima visibilidad. **IPs Residenciales** (Alto Costo), lo que asegura la autenticidad.</span>
-                </div>
-                <div class="price">$60.00 USD</div>
-                <button class="action-button" onclick="buyNow(this)">COMPRAR</button>
-            </div>
-        </div>
-
-        <div class="payment-info">
-            <p><span class="highlight">🌎 PAGO FÁCIL EN LATINOAMÉRICA:</span></p>
-            <img src="mercado.jpg" alt="Logo de Mercado Pago" class="payment-logo">
-            <p>Para pagos en moneda local (ej. **Soles en Perú**) o países de Latinoamérica, aceptamos **MERCADO PAGO**.</p>
-            <p>Por favor, contáctanos antes de comprar a nuestro WhatsApp:</p>
-            <p><a href="https://wa.me/51946986960" target="_blank" class="highlight">+51 946986960 (WhatsApp)</a></p>
-            
-            <hr style="border-top: 1px solid #3a3a3a; margin: 25px auto; width: 50%;">
-            
-            <p><span class="highlight">💵 PAGO INTERNACIONAL (Otros Países):</span></p>
-            <p>Para pagos en Dólares (USD) desde cualquier otro país, utiliza nuestra plataforma segura:</p>
-            <p><a href="https://buymeacoffee.com/luisnunez" target="_blank">**Buy Me a Coffee (luisnuneze)**</a></p>
-        </div>
-
-        <div class="post-purchase-contact">
-            <h2>¡PASO FINAL IMPORTANTE!</h2>
-            <p>DESPUÉS DE REALIZAR TU COMPRA (Mercado Pago o Buy Me a Coffee), por favor, **contáctate inmediatamente al WhatsApp**.</p>
-            <a href="https://wa.me/51946986960" target="_blank" class="whatsapp-number">+51 946986960</a>
-            <p>¡No olvides mandar tu **COMPROBANTE DE PAGO** para iniciar tu servicio lo antes posible!</p>
-        </div>
+    <section class="catalog">
+        <h2>🔥 Nuestro Catálogo Exclusivo</h2>
         
-    </main>
-    <script>
-        // ENLACES UTILIZADOS
-        const BUY_ME_A_COFFEE_LINK = "https://buymeacoffee.com/luisnunez";
-        const WHATSAPP_LINK = "https://wa.me/51946986960";
-        
-        // Función de compra (mejorada para el formato de fila)
-        function buyNow(buttonElement) {
-            const row = buttonElement.closest('.service-row');
-            const productName = row.getAttribute('data-name');
-            const price = row.getAttribute('data-price');
-            const formattedPrice = parseFloat(price).toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            });
-            
-            alert(
-                `🛒 INICIO DE COMPRA: ${productName}\n\n` +
-                `El **PRECIO FINAL** es ${formattedPrice}.\n\n` +
-                "⚠️ ¿CÓMO PROCEDER?\n" +
-                "1. Haz clic en 'OK' para ir a Buy Me a Coffee (Pago en USD para la mayoría de países).\n" +
-                "2. Si quieres pagar con **Mercado Pago en Moneda Local (Latam)**, ¡CIERRA ESTE MENSAJE!\n" +
-                `3. Contáctanos por WhatsApp al **+51 946986960** para el link de Mercado Pago/Soles.\n`
-            );
-            
-            // Abrir el link de Buy Me a Coffee después del alert (Para compras en USD)
-            window.open(BUY_ME_A_COFFEE_LINK, '_blank');
-        }
+        <div class="product-grid">
 
-        // --- GOOGLE TRANSLATE WIDGET (Detección y Traducción Automática) ---
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'es', 
-                includedLanguages: 'en,pt,fr,de,it', 
-                autoDisplay: true,
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <div class="product-card">
+                <img src="URL_FOTO_CHUCKY_CATALOGO" alt="Muñeco Chucky Modelo Niño Bueno">
+                <div class="product-info">
+                    <h3>Muñeco Chucky – Niño Bueno</h3>
+                    <p class="price">S/200</p>
+                    <a href="Chucky200soles.html" class="btn-view">
+                        <i class="fa-solid fa-eye"></i> Ver Detalles
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://scontent.ftcq1-1.fna.fbcdn.net/v/t39.30808-6/580062745_816462764347665_8845629530532792643_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=EuzYb-r59ywQ7kNvwEXjwEq&_nc_oc=AdkmNHcKTaQvH_bVbizhFNI-osGvo1F2dCljvq4NDf5upvYoO5sqp6YpWxVKDVFiVZY&_nc_zt=23&_nc_ht=scontent.ftcq1-1.fna&_nc_gid=_ktTpWAZNqfXReb-kOvz1Q&oh=00_Afg6IiC9RE-qXu-zkIw9dFR32R7iTRk3f3wbzk4gfOXv-Q&oe=691EBE7B" alt="Muñeco Chucky 65cm con caja">
+                <div class="product-info">
+                    <h3>Chucky 65cm con Caja y Sonido</h3>
+                    <p class="price">S/300</p>
+                    <a href="chucky300.html" class="btn-view">
+                        <i class="fa-solid fa-eye"></i> Ver Detalles
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.ibb.co/8LwfGG3w/Captura-de-pantalla-2025-11-15-170805.png" alt="Muñeca Annabelle de Trick or Treat Studios">
+                <div class="product-info">
+                    <h3>Muñeca Annabelle – Clásica Importada</h3>
+                    <p class="price">S/500</p>
+                    <a href="Anabelle500.html" class="btn-view">
+                        <i class="fa-solid fa-eye"></i> Ver Detalles
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.postimg.cc/nh5rkSkC/Captura-de-pantalla-2025-11-15-171031.png" alt="Muñeco Chucky Trick or Treat Studios Premium">
+                <div class="product-info">
+                    <h3>Chucky Premium 1:1 – TOTS</h3>
+                    <p class="price">S/1500</p>
+                    <a href="ChuckyTO.html" class="btn-view">
+                        <i class="fa-solid fa-eye"></i> Ver Detalles
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <p>World Dolls E.I.R.L. | RUC: 20602972594 | Todos los derechos reservados.</p>
+    <p>Siguenos en <a href="https://www.facebook.com/WorldDollsPeru/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook Oficial</a></p>
+</footer>
+
 </body>
 </html>
