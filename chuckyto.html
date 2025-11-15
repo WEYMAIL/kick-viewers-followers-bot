@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chucky Trick or Treat Studios – Original S/1500 | World Dolls E.I.R.L</title>
+    <link rel="icon" type="image/png" href="https://www.google.com/s2/favicons?sz=256&domain_url=https%3A%2F%2Fwww.curseofchucky.com%2F">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -34,8 +35,8 @@
         /* Imagen */
         .product-image { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); object-fit: cover; }
         
-        /* Precio y Compra */
-        .price-box { margin: 25px 0; padding: 15px 20px; background-color: #E0E0E0; border-radius: 8px; text-align: center; }
+        /* Precio y Compra (Aseguramos que el margin sea solo en la parte inferior) */
+        .price-box { margin: 0 0 25px 0; padding: 15px 20px; background-color: #E0E0E0; border-radius: 8px; text-align: center; }
         .price-box p { font-size: 1.2em; font-weight: bold; color: var(--dark-navy); margin-bottom: 5px; }
         .price-box .price { font-size: 3em; font-weight: 900; color: var(--primary-red); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); }
         .price-box .price span { font-size: 0.6em; color: var(--price-color); margin-left: 5px; }
@@ -44,7 +45,6 @@
         .btn-buy {
             display: block;
             width: 100%;
-            max-width: 350px;
             margin: 20px auto 0;
             padding: 15px;
             background-color: var(--mp-blue);
@@ -88,7 +88,7 @@
         /* Botón de Regreso al Catálogo */
         .btn-back {
             display: inline-block;
-            margin-top: 20px;
+            margin-bottom: 20px;
             color: var(--dark-navy);
             text-decoration: none;
             font-weight: bold;
@@ -99,8 +99,8 @@
         /* Responsividad básica */
         @media (max-width: 768px) {
             .product-content { flex-direction: column; }
-            .details-col { order: -1; }
-            .image-col { min-width: 100%; }
+            .details-col { order: 1; } /* Imagen primero, luego precio, luego detalles */
+            .image-col { min-width: 100%; order: 0; }
         }
 
     </style>
@@ -118,7 +118,10 @@
         
         <div class="image-col">
             <img src="https://i.postimg.cc/nh5rkSkC/Captura-de-pantalla-2025-11-15-171031.png" alt="Muñeco Chucky Trick or Treat Studios Premium" class="product-image">
+        </div>
 
+        <div class="details-col">
+            
             <div class="price-box">
                 <p>PRODUCTO PREMIUM DE COLECCIÓN:</p>
                 <div class="price">S/1500<span>Soles</span></div>
@@ -131,19 +134,16 @@
                     <i class="fa-solid fa-credit-card"></i> Pago Seguro / Pagos en cuotas disponibles.
                 </p>
             </div>
-        </div>
-
-        <div class="details-col">
             
             <div class="product-details">
                 <h2>CARACTERÍSTICAS EXCLUSIVAS</h2>
                 <ul>
-                    <li><i class="fa-solid fa-medal"></i> **Licencia oficial** – Trick Or Treat Studios.</li>
-                    <li><i class="fa-solid fa-person"></i> **Réplica 1:1** (Tamaño real) – Altura: **80 cm**.</li>
-                    <li><i class="fa-solid fa-wand-magic-sparkles"></i> Elaborado a partir del **diseño original usado en la película**.</li>
-                    <li><i class="fa-solid fa-cube"></i> Cuerpo de **espuma de alta densidad** (duradero y firme).</li>
-                    <li><i class="fa-solid fa-user-gear"></i> **Totalmente articulado** para poses dinámicas.</li>
-                    <li><i class="fa-solid fa-trophy"></i> **Calidad Premium**, la mejor réplica disponible en el mercado.</li>
+                    <li><i class="fa-solid fa-medal"></i> Licencia oficial – Trick Or Treat Studios.</li>
+                    <li><i class="fa-solid fa-person"></i> Réplica 1:1 (Tamaño real) – Altura: 80 cm.</li>
+                    <li><i class="fa-solid fa-wand-magic-sparkles"></i> Elaborado a partir del diseño original usado en la película.</li>
+                    <li><i class="fa-solid fa-cube"></i> Cuerpo de espuma de alta densidad (duradero y firme).</li>
+                    <li><i class="fa-solid fa-user-gear"></i> Totalmente articulado para poses dinámicas.</li>
+                    <li><i class="fa-solid fa-trophy"></i> Calidad Premium, la mejor réplica disponible en el mercado.</li>
                 </ul>
             </div>
 
@@ -151,14 +151,14 @@
                 <h3>Información de la Tienda y Envíos</h3>
                 
                 <div style="background-color: #FFF3E0; border: 1px solid #FFC107;">
-                    <p><i class="fa-solid fa-building"></i> **World Dolls E.I.R.L** – Tienda Virtual Oficial</p>
+                    <p><i class="fa-solid fa-building"></i> World Dolls E.I.R.L – Tienda Virtual Oficial</p>
                     <p><i class="fa-solid fa-key"></i> RUC: 20602972594</p>
-                    <p><i class="fa-solid fa-truck-fast"></i> **Envíos a todo el Perú** por Shalom, Olva Courier o Urbano.</p>
+                    <p><i class="fa-solid fa-truck-fast"></i> Envíos a todo el Perú por Shalom, Olva Courier o Urbano.</p>
                 </div>
                 
                 <div style="background-color: #E8F5E9; border: 1px solid #4CAF50;">
-                    <p><i class="fa-solid fa-money-check-dollar"></i> **Pagos Aceptados:** Tarjeta de crédito/débito, Yape, Plin y transferencia bancaria.</p>
-                    <p><i class="fa-solid fa-certificate"></i> **Garantía:** Producto nuevo y 100% original.</p>
+                    <p><i class="fa-solid fa-money-check-dollar"></i> Pagos Aceptados: Tarjeta de crédito/débito, Yape, Plin y transferencia bancaria.</p>
+                    <p><i class="fa-solid fa-certificate"></i> Garantía: Producto nuevo y 100% original.</p>
                 </div>
 
             </div>
